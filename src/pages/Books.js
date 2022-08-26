@@ -1,10 +1,16 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Element from '../components/Element';
 import FormToAdd from '../components/FormToAdd';
+import { apiFetchBook } from '../redux/books/books';
 
 const Books = () => {
   const books = useSelector((state) => state.books);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(apiFetchBook());
+  }, [dispatch]);
 
   return (
     <>
